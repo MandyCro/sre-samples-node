@@ -4,7 +4,8 @@
   "description": "Este material contempla exemplos práticos de uso de técnicas essenciais em aplicações, afim de garantir a confiabilidade, resiliência, escalabilidade e alta disponibilidade.",
   "main": "index.js",
   "scripts": {
-    "server-timeout": "node --watch src/server-timeout.js"
+    "server-timeout": "node --watch src/server-timeout.js",
+    "server-ratelimit": "node --watch src/server-ratelimit.js"
   },
   "keywords": [],
   "author": "",
