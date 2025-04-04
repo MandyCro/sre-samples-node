@@ -269,13 +269,14 @@ Aumentar quantidade de chamadas simultâneas e avaliar o comportamento.
 **BÔNUS**: implementar método que utilizando threads para realizar as chamadas e logar na tela 
 
 
-```
+
 // INSIRA SUA ANÁLISE OU PARECER ABAIXO
 
+Foi aumentado o slot de 2 para 10, e também uma fila de espera de outros 10 slots. Caso a fila ultrapasse esse valor, será retornado um erro e a chamada não será processada, retornando um reject da promise do bulkhead.
 
-
+```js
+const bulkheadPolicy = bulkhead(10, 10)
 ```
-
 
 ---
 ### 2.4 Circuit Breaker
@@ -350,11 +351,13 @@ curl localhost:8080/api/circuitbreaker
 Ajustar o o percentual de falhas para que o circuit breaker obtenha sucesso ao receber as requisições após sua abertura.
 Observar comportamento do circuito no console.
 
-```
+
 // INSIRA SUA ANÁLISE OU PARECER ABAIXO
 
+Foi aumentado o slot de 2 para 10, e também uma fila de espera de outros 10 slots. Caso a fila ultrapasse esse valor, será retornado um erro e a chamada não será processada, retornando um reject da promise do bulkhead.
 
-
+```js
+const bulkheadPolicy = bulkhead(10, 10)
 ```
 
 ---

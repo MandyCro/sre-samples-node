@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "server-timeout": "node --watch src/server-timeout.js",
-    "server-ratelimit": "node --watch src/server-ratelimit.js"
+    "server-ratelimit": "node --watch src/server-ratelimit.js",
+    "server-bulkhead": "node --watch src/server-bulkhead.js",
+    "server-circuit-breaker": "node --watch src/server-circuit-breaker.js"
   },
   "keywords": [],
   "author": "",
