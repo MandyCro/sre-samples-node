@@ -354,11 +354,14 @@ Observar comportamento do circuito no console.
 
 // INSIRA SUA ANÁLISE OU PARECER ABAIXO
 
-Foi aumentado o slot de 2 para 10, e também uma fila de espera de outros 10 slots. Caso a fila ultrapasse esse valor, será retornado um erro e a chamada não será processada, retornando um reject da promise do bulkhead.
+Foi aumentado o percentual para que ocurram menos falhas nesta parte do código: 
 
 ```js
-const bulkheadPolicy = bulkhead(10, 10)
+const shouldFail = Math.random() > 0.9
 ```
+
+Rodando `npm run server:circuit-breaker` verifica-se os logs de sucesso e falha do circuit breaker.
+
 
 ---
 ### 2.5 Health Check
