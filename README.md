@@ -176,12 +176,39 @@ Alterar limite de requisições permitidas para 100 num intervalo de 1 minuto e 
 ![Screen Shot 2024-09-13 at 22 51 23](https://github.com/user-attachments/assets/6407456d-9bb5-41bb-ba17-9cc4a5272d29)
 
 
-```
+
 // INSIRA SUA ANÁLISE OU PARECER ABAIXO
 
+O limite de requisições por minuto foi alterado nesta parte do código:
 
+```js
+const limiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minuto
+  max: 100, // Limite de 100 requisições
+  message: 'Você excedeu o limite de requisições, tente novamente mais tarde.',
+})
 ```
 
+E uma função foi criada para fazer o teste do rate limit atualizado, onde o endpoint `/api/ratelimit` foi chamado 110 vezes, uma vez a cada 100 milisegundos:
+
+```js
+async function breakRateLimit() {
+  let count = 0
+
+  const interval = setInterval(async () => {
+    const result = await fetch('http://localhost:8080/api/ratelimit')
+    const data = await result.text()
+
+    console.log(`Count: ${count} // Data: ${data}`)
+
+    count++
+
+    if (count > 110) {
+      clearInterval(interval)
+    }
+  }, 100)
+}
+```
 
 ---
 ### 2.3 Bulkhead
