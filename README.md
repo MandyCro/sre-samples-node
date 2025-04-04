@@ -112,7 +112,9 @@ Ajustar configurações de timeout e corrigir erro de timeout execedido ao invoc
 
 // INSIRA SUA ANÁLISE OU PARECER ABAIXO
 
-A função timeoutPromise está com um limite abaixo da função externalService. Para resolver ajustei os segundos da função timeoutPromise para maior que o tempo da externalService, assim não excede o limite do tempo.
+O erro de timeout ocorre pelo fato de que a função externalService() demora 5 segundos para resolver. Por conta da promise da função timeoutPromise() conseguir resolver apenas dentro de 3 segundos, qualquer processo que demore mais do isso será rejeitado, retornando assim o erro de tempo limite excedido.
+
+Para resolver o erro de timeout, podemos extender o tempo de espera da função timeoutPromise() para 5 segundos ou mais, fazendo com que de tempo do externalService() resolver.
 
 
 ---
